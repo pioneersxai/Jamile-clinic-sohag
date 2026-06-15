@@ -115,7 +115,7 @@
                     <button class="header-btn" onclick="toggleNotifications()" title="Notifications">
                         <i class="fas fa-bell"></i>
                     </button>
-                    <a href="mailto:support@pioneersx.store" class="header-btn" title="Help & Support">
+                    <a id="support-email-link" href="mailto:support@pioneersx.store" class="header-btn" title="Help & Support">
                         <i class="fas fa-question-circle"></i>
                     </a>
                 </div>
@@ -233,8 +233,14 @@
         </main>
     </div>
     
+    <script src="../config.js"></script>
     <script src="js/api.js"></script>
     <script>
+        // Wire support email from config
+        if (typeof BRAND !== 'undefined') {
+            document.getElementById('support-email-link').href = 'mailto:' + BRAND.email;
+        }
+
         // Auth check
         if (!API.isLoggedIn()) {
             window.location.href = 'index.html';
@@ -247,30 +253,25 @@
             
             const user = JSON.parse(userStr);
             
-            // Capitalize names
             const firstName = user.firstName || 'User';
             const lastName = user.lastName || '';
             const capitalizedFirst = firstName.charAt(0).toUpperCase() + firstName.slice(1);
             const capitalizedLast = lastName ? lastName.charAt(0).toUpperCase() + lastName.slice(1) : '';
             const fullName = `${capitalizedFirst} ${capitalizedLast}`.trim();
             
-            // Update sidebar
             document.getElementById('userName').textContent = fullName;
             document.getElementById('userEmail').textContent = user.email || '';
             document.getElementById('userAvatar').textContent = capitalizedFirst.charAt(0);
             
-            // Update profile header
             document.getElementById('profileName').textContent = fullName;
             document.getElementById('profileEmail').textContent = user.email || '';
             document.getElementById('profileAvatar').textContent = capitalizedFirst.charAt(0);
             
-            // Update badges
             document.getElementById('roleBadge').textContent = (user.role || 'user').charAt(0).toUpperCase() + (user.role || 'user').slice(1);
             const verifiedBadge = document.getElementById('verifiedBadge');
             verifiedBadge.textContent = user.isEmailVerified ? 'Verified ✓' : 'Not Verified';
             verifiedBadge.className = user.isEmailVerified ? 'profile-badge verified' : 'profile-badge';
             
-            // Fill form
             document.getElementById('firstName').value = user.firstName || '';
             document.getElementById('lastName').value = user.lastName || '';
             document.getElementById('email').value = user.email || '';
@@ -278,11 +279,9 @@
             document.getElementById('company').value = user.company || '';
         }
         
-        // Toggle password visibility
         function togglePasswordField(fieldId, iconId) {
             const field = document.getElementById(fieldId);
             const icon = document.getElementById(iconId);
-            
             if (field.type === 'password') {
                 field.type = 'text';
                 icon.classList.replace('fa-eye', 'fa-eye-slash');
@@ -292,14 +291,12 @@
             }
         }
         
-        // Show alert
         function showAlert(elementId, message, type = 'error') {
             const alert = document.getElementById(elementId);
             alert.className = `alert alert-${type} show`;
             alert.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
         }
         
-        // Profile form submission
         document.getElementById('profileForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('saveBtn');
@@ -315,7 +312,7 @@
             
             if (result.success) {
                 showAlert('profileAlert', 'Profile updated successfully!', 'success');
-                loadUserData(); // Reload user data
+                loadUserData();
             } else {
                 showAlert('profileAlert', result.message || 'Update failed');
             }
@@ -324,7 +321,6 @@
             btn.innerHTML = 'Save Changes';
         });
         
-        // Password form submission
         document.getElementById('passwordForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -356,7 +352,6 @@
             btn.innerHTML = 'Update Password';
         });
         
-        // Sidebar functions
         function openSidebar() {
             document.getElementById('sidebar').classList.add('open');
             document.getElementById('overlay').classList.add('show');
@@ -367,7 +362,6 @@
             document.getElementById('overlay').classList.remove('show');
         }
         
-        // Logout modal
         function showLogoutModal() {
             document.getElementById('logoutModal').classList.add('show');
         }
@@ -381,11 +375,9 @@
             window.location.href = 'index.html';
         }
         
-        // Notification dropdown
         function toggleNotifications() {
             const dropdown = document.getElementById('notificationDropdown');
             dropdown.classList.toggle('show');
-            
             if (dropdown.classList.contains('show')) {
                 setTimeout(() => {
                     document.addEventListener('click', closeNotificationsOutside);
@@ -401,7 +393,6 @@
             }
         }
         
-        // Load data on page load
         loadUserData();
     </script>
 </body>
