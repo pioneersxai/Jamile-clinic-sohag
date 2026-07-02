@@ -13,15 +13,15 @@
 
 :root {
     /* Color Palette */
-    --primary-red: #ff1e1e;
+    --primary-red: #C9A55C;
     --secondary-blue: #2563eb;
-    --dark-bg: #000;
-    --darker-bg: #0a0a0a;
-    --text-white: #fff;
-    --text-gray: #b0b0b0;
-    --card-bg: #1a1a1a;
-    --border-color: #333;
-    --success-green: #10b981;
+    --dark-bg: #1a2744;
+    --darker-bg: #12193a;
+    --text-white: #1a2744;
+    --text-gray: #6b5e4e;
+    --card-bg: #faf7f2;
+    --border-color: #e8d5bc;
+    --success-green: #C9A55C;
     
     /* Typography */
     --font-main: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,7 +36,7 @@
    ================================== */
 body {
     font-family: var(--font-main);
-    background-color: var(--dark-bg);
+    background-color: #faf7f2;
     color: var(--text-white);
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -1381,4 +1381,103 @@ footer {
     .price-amount {
         font-size: 2rem;
     }
+}
+
+/* ── JAMELA CLINICS OVERRIDES ── */
+:root {
+  --beige:     #f5ede0;
+  --sand:      #faf7f2;
+  --navy:      #1a2744;
+  --gold:      #C9A55C;
+  --gold-dark: #a8863e;
+  --blush:     #F0B8C4;
+}
+
+body {
+  background-color: var(--sand);
+  color: var(--navy);
+}
+
+nav {
+  background: var(--sand) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.logo, .logo .x {
+  color: var(--navy) !important;
+  text-shadow: none !important;
+}
+
+.nav-links a {
+  color: var(--navy) !important;
+}
+
+.nav-links a:hover {
+  color: var(--gold) !important;
+}
+
+.btn-nav-login {
+  border-color: var(--navy) !important;
+  color: var(--navy) !important;
+}
+
+.btn-nav-signup {
+  background: var(--gold) !important;
+  color: #fff !important;
+}
+
+.btn-nav-signup:hover {
+  background: var(--gold-dark) !important;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #2d4270 60%, var(--navy) 100%) !important;
+}
+
+.btn-primary {
+  background: var(--gold) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background: var(--gold-dark) !important;
+  box-shadow: 0 5px 20px rgba(201,165,92,0.4) !important;
+}
+
+.section-title::after {
+  background: var(--gold) !important;
+}
+
+.stats {
+  background: var(--navy) !important;
+}
+
+.stat-number {
+  color: var(--gold) !important;
+}
+
+.medical-card:nth-child(3n) {
+  background: var(--navy) !important;
+}
+
+.product-card.featured-card {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 30px rgba(201,165,92,0.2) !important;
+}
+
+.whatsapp-float {
+  background: #25d366 !important;
+}
+
+footer {
+  background: var(--navy) !important;
+}
+
+.footer-bottom {
+  border-top-color: rgba(255,255,255,0.1) !important;
+}
+
+.x-glow, .x {
+  color: var(--gold) !important;
+  text-shadow: 0 0 10px rgba(201,165,92,0.4) !important;
 }
