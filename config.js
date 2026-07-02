@@ -1,105 +1,120 @@
 /**
  * ============================================================
- *  BRAND CONFIG — Edit ONLY this file to fully rebrand the site
- *  One file. One client. 15 minutes.
+ *  BRAND CONFIG — عيادات چميلة — Jamela Clinics
+ *  Edit ONLY this file to rebrand
  * ============================================================
  */
 
 const BRAND = {
 
-  // ── Core Identity ─────────────────────────────────────────
-  name:        "PioneersX",                          // Brand name shown everywhere
-  tagline:     "مساعدك الشخصي بالذكاء الاصطناعي",   // Hero subtitle
-  description: "منصة الذكاء الاصطناعي الأكثر تقدماً في المنطقة",
+  name:        "عيادات چميلة",
+  tagline:     "چميلة.. عيشي الفرق",
+  description: "عيادات چميلة في سوهاج — جلدية، تجميل، ليزر، أسنان وأكثر. احجزي جلستك الآن",
 
-  // ── Colors (also update --primary-red in css/style.css) ───
-  primaryColor: "#ff1e1e",   // Main brand color — match with CSS :root
+  primaryColor: "#C9A55C",   // gold
 
-  // ── Logo ──────────────────────────────────────────────────
-  logoLetter:  "X",          // Single letter shown in navbar logo
-  logoFile:    "",           // Optional: path to image logo, e.g. "assets/logo.png"
-  faviconColor: "%23ff1e1e", // URL-encoded hex for SVG favicon (# = %23)
+  logoLetter:  "ج",
+  logoFile:    "assets/logo.png",
+  faviconColor: "%23C9A55C",
 
-  // ── Contact ───────────────────────────────────────────────
-  phone:      "+966 54 770 5498",
-  whatsapp:   "9665477705498",   // No + or spaces — used in wa.me links
-  email:      "info@pioneersx.store",
-  city:       "الرياض، المملكة العربية السعودية",
+  phone:      "01149881909",
+  whatsapp:   "201149881909",
+  email:      "info@jamelaclinics.com",
+  city:       "سوهاج — شارع الجمهورية — برج صلاح ضيف الله الذهبي — أعلى ماكدونالدز",
 
-  // ── API ───────────────────────────────────────────────────
   apiBase:    "https://pioneersx-backend.onrender.com/api",
+  domain:     "https://pioneersxai.github.io/Jamile-clinic-sohag",
 
-  // ── Domain ────────────────────────────────────────────────
-  domain:     "https://pioneersxai.github.io/pioneersx_webar",
-
-  // ── Social Links (set to "" to hide) ─────────────────────
   social: {
-    twitter:   "https://x.com/pioneersxai",
-    linkedin:  "https://www.linkedin.com/company/pioneersx",
-    instagram: "https://www.instagram.com/pioneersxai/",
-    youtube:   "https://www.youtube.com/@pioneersxai",
-    tiktok:    "https://www.tiktok.com/@pioneersxai",
+    twitter:   "",
+    linkedin:  "",
+    instagram: "https://www.instagram.com/jamelaclinics/",
+    youtube:   "",
+    tiktok:    "",
   },
 
-  // ── Language & Direction ──────────────────────────────────
-  lang: "ar",    // "ar" for Arabic, "en" for English
-  dir:  "rtl",   // "rtl" for Arabic, "ltr" for English
+  lang: "ar",
+  dir:  "rtl",
 
-  // ── Products (shown in products/features section) ─────────
+  // ── Clinic Services (shown as products/sessions to book) ──
   products: [
     {
-      id:          "assistx",
-      name:        "AssistX",
-      tagline:     "مساعد ذكي لعملك",
-      description: "مساعد ذكاء اصطناعي متخصص يفهم طبيعة عملك ويتفاعل مع عملائك بكفاءة عالية",
-      icon:        "fas fa-robot",
-      link:        "assistx/index.html",
+      id:          "laser",
+      name:        "إزالة الشعر بالليزر",
+      tagline:     "نتائج دائمة بأحدث التقنيات",
+      description: "إزالة الشعر الزائد نهائياً بأجهزة ليزر متطورة وآمنة لجميع أنواع البشرة",
+      icon:        "fas fa-star-of-life",
+      link:        "dashboard/index.html",
     },
     {
-      id:          "analyticsx",
-      name:        "AnalyticsX",
-      tagline:     "تحليلات ذكية لقراراتك",
-      description: "منصة تحليل بيانات مدعومة بالذكاء الاصطناعي تحول أرقامك إلى قرارات استراتيجية",
-      icon:        "fas fa-chart-line",
-      link:        "analyticsx/index.html",
+      id:          "botox",
+      name:        "بوتوكس وفيلر",
+      tagline:     "شبابك في أيدي خبراء",
+      description: "حقن البوتوكس والفيلر لشد الوجه، ملء التجاعيد، ورسم الملامح بدقة عالية",
+      icon:        "fas fa-syringe",
+      link:        "dashboard/index.html",
     },
     {
-      id:          "clinix",
-      name:        "CliniX",
-      tagline:     "الذكاء الاصطناعي للقطاع الطبي",
-      description: "حلول ذكاء اصطناعي متخصصة للعيادات والمستشفيات لتحسين تجربة المريض",
+      id:          "skin",
+      name:        "العناية بالبشرة",
+      tagline:     "بشرتك تستحق الأفضل",
+      description: "تنظيف البشرة العميق، علاج حب الشباب، تفتيح البشرة وجلسات التقشير الكيميائي",
+      icon:        "fas fa-spa",
+      link:        "dashboard/index.html",
+    },
+    {
+      id:          "dental",
+      name:        "تبييض الأسنان",
+      tagline:     "ابتسامة تضيء المكان",
+      description: "تبييض الأسنان بالليزر والتقنيات الحديثة للحصول على ابتسامة مشرقة وجذابة",
+      icon:        "fas fa-tooth",
+      link:        "dashboard/index.html",
+    },
+    {
+      id:          "facelift",
+      name:        "شد الوجه",
+      tagline:     "احتفظي بجمالك الخالد",
+      description: "جلسات شد الوجه بالخيوط والتقنيات غير الجراحية للحصول على إطلالة أصغر سناً",
+      icon:        "fas fa-magic",
+      link:        "dashboard/index.html",
+    },
+    {
+      id:          "nutrition",
+      name:        "التغذية العلاجية",
+      tagline:     "صحتك من الداخل للخارج",
+      description: "برامج تغذية علاجية مخصصة لإنقاص الوزن والحصول على جسم صحي ومتوازن",
       icon:        "fas fa-heartbeat",
-      link:        "clinix/index.html",
+      link:        "dashboard/index.html",
     },
   ],
 
-  // ── Pricing Tiers ─────────────────────────────────────────
+  // ── Session Packages (pricing tiers) ──────────────────────
   pricing: [
     {
-      name:     "الأساسية",
-      price:    "499",
-      currency: "ر.س",
-      period:   "شهرياً",
-      features: ["مساعد ذكي واحد", "1000 رسالة/شهر", "دعم فني", "تقارير أساسية"],
-      cta:      "ابدأ الآن",
+      name:     "جلسة واحدة",
+      price:    "تواصلي معنا",
+      currency: "",
+      period:   "",
+      features: ["استشارة مجانية", "جلسة واحدة مخصصة", "متابعة ما بعد الجلسة"],
+      cta:      "احجزي الآن",
       featured: false,
     },
     {
-      name:     "الاحترافية",
-      price:    "999",
-      currency: "ر.س",
-      period:   "شهرياً",
-      features: ["3 مساعدين ذكيين", "10,000 رسالة/شهر", "دعم أولوية", "تحليلات متقدمة", "تكامل API"],
+      name:     "باقة 5 جلسات",
+      price:    "وفري 20%",
+      currency: "",
+      period:   "",
+      features: ["5 جلسات متتالية", "خصم 20% على السعر", "أولوية في الحجز", "متابعة مستمرة"],
       cta:      "الأكثر طلباً",
       featured: true,
     },
     {
-      name:     "المؤسسية",
-      price:    "اتصل بنا",
+      name:     "باقة VIP",
+      price:    "مخصصة",
       currency: "",
       period:   "",
-      features: ["مساعدين غير محدودين", "رسائل غير محدودة", "مدير حساب مخصص", "تخصيص كامل", "SLA مضمون"],
-      cta:      "تواصل معنا",
+      features: ["جلسات غير محدودة", "طبيبة خاصة", "أولوية قصوى", "متابعة شاملة", "هدايا حصرية"],
+      cta:      "تواصلي معنا",
       featured: false,
     },
   ],
@@ -107,17 +122,12 @@ const BRAND = {
 };
 
 // ── Auto-apply brand to page ───────────────────────────────
-// Runs on DOMContentLoaded and replaces all [data-brand] elements
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Page title
   document.title = `${BRAND.name} - ${BRAND.tagline}`;
-
-  // Lang & direction
   document.documentElement.lang = BRAND.lang;
   document.documentElement.dir  = BRAND.dir;
 
-  // Replace all elements that have data-brand attributes
   const replacements = {
     "brand-name":        BRAND.name,
     "brand-tagline":     BRAND.tagline,
@@ -134,22 +144,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // WhatsApp links
   document.querySelectorAll("[data-whatsapp-link]").forEach(el => {
     el.href = `https://wa.me/${BRAND.whatsapp}`;
   });
 
-  // Phone links
   document.querySelectorAll("[data-phone-link]").forEach(el => {
     el.href = `tel:${BRAND.phone}`;
   });
 
-  // Email links
   document.querySelectorAll("[data-email-link]").forEach(el => {
     el.href = `mailto:${BRAND.email}`;
   });
 
-  // Social links
   const socialMap = {
     "social-twitter":   BRAND.social.twitter,
     "social-linkedin":  BRAND.social.linkedin,
@@ -164,9 +170,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Logo letter
+  // Logo — image if available, else letter
   document.querySelectorAll("[data-brand='logo-letter']").forEach(el => {
-    el.textContent = BRAND.logoLetter;
+    if (BRAND.logoFile) {
+      el.innerHTML = `<img src="${BRAND.logoFile}" alt="${BRAND.name}" style="height:40px;object-fit:contain;">`;
+    } else {
+      el.textContent = BRAND.logoLetter;
+    }
   });
 
 });
