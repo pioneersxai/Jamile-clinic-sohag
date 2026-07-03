@@ -112,6 +112,22 @@ nav.scrolled .nav-login { color: #1a2744; border-color: rgba(26,39,68,0.3); }
 .hamburger { display:none; background:none; border:none; color:#1a2744; font-size:1.4rem; }
 nav.scrolled .hamburger { color:#1a2744; }
 
+/* Team card image */
+.team-card-img {
+    height: 260px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    margin: -1px -1px 0 -1px;
+}
+.team-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform .5s;
+}
+.team-card:hover .team-card-img img { transform: scale(1.04); }
+
 /* sections get photos */
 .section-photo-bg {
     background-size: cover;
@@ -170,20 +186,56 @@ nav.scrolled .hamburger { color:#1a2744; }
 
 /* mobile */
 @media(max-width:900px) {
-    nav { top:12px; border-radius:20px; padding:10px 18px; width:calc(100% - 32px); }
-    .nav-links { display:none; }
+    nav { top:10px; border-radius:20px; padding:10px 18px; width:calc(100% - 24px); }
+    .nav-links { display:none !important; }
     .nav-links.open {
-        display:flex; flex-direction:column;
-        position:absolute; top:65px; right:0; left:0;
-        background:rgba(255,255,255,0.97);
-        border-radius:16px; padding:16px;
-        box-shadow:0 8px 32px rgba(0,0,0,.1);
-        border:1px solid rgba(201,165,92,0.2);
-        gap:4px;
+        display:flex !important; flex-direction:column;
+        position:absolute; top:62px; right:0; left:0;
+        background:rgba(232,218,196,0.98);
+        border-radius:20px; padding:16px 20px;
+        box-shadow:0 8px 32px rgba(0,0,0,.12);
+        border:1px solid rgba(201,165,92,0.3);
+        gap:4px; z-index:999;
     }
-    .nav-links.open a { color:#1a2744 !important; }
-    .nav-book { display:none; }
+    .nav-links.open li a { color:#1a2744 !important; padding:12px 16px; display:block; border-radius:10px; font-size:15px; }
+    .nav-links.open li a:hover { background:rgba(201,165,92,0.15); }
+    .nav-book { display:none !important; }
+    .nav-login { display:none !important; }
     .hamburger { display:block !important; }
+}
+
+/* Mobile general fixes */
+@media(max-width:768px) {
+    .hero { padding:120px 16px 60px; }
+    .hero h1 { font-size:2.2rem !important; }
+    .hero .tagline { font-size:1.1rem !important; }
+    .hero-description { font-size:.95rem !important; }
+    .hero-buttons { flex-direction:column; align-items:center; gap:10px; }
+    .hero-buttons .btn { width:100%; max-width:280px; justify-content:center; }
+
+    .stats-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+    .stat-number { font-size:2rem; }
+
+    .medical-grid { grid-template-columns:1fr; }
+    .services-grid { grid-template-columns:1fr; }
+    .team-grid { grid-template-columns:1fr; }
+    .testimonials-grid { grid-template-columns:1fr; }
+
+    .section { padding:60px 0; }
+    .section-title { font-size:1.8rem; }
+    .container { padding:0 16px; }
+
+    .contact-container { grid-template-columns:1fr; gap:24px; }
+
+    .footer-content { grid-template-columns:1fr 1fr; gap:24px; }
+    .footer-bottom { font-size:.75rem; }
+
+    .team-card-img { height:220px; }
+}
+
+@media(max-width:480px) {
+    .footer-content { grid-template-columns:1fr; }
+    .stats-grid { grid-template-columns:repeat(2,1fr); }
 }
     </style>
 </head>
@@ -209,7 +261,7 @@ nav.scrolled .hamburger { color:#1a2744; }
                 <a href="./dashboard/index.html" class="nav-login">دخول</a>
                 <a href="./dashboard/register.html" class="nav-book">احجزي الآن</a>
             </div>
-            <button class="hamburger" id="hamburger" style="display:none"><i class="fas fa-bars"></i></button>
+            <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -245,7 +297,7 @@ nav.scrolled .hamburger { color:#1a2744; }
                 <div class="stat-item fade-in"><div class="stat-number">+5000</div><div class="stat-label">عميلة سعيدة</div></div>
                 <div class="stat-item fade-in"><div class="stat-number">8+</div><div class="stat-label">سنوات خبرة</div></div>
                 <div class="stat-item fade-in"><div class="stat-number">15+</div><div class="stat-label">خدمة متخصصة</div></div>
-                <div class="stat-item fade-in"><div class="stat-number">3</div><div class="stat-label">أطباء متخصصون</div></div>
+                <div class="stat-item fade-in"><div class="stat-number">+3</div><div class="stat-label">أطباء متخصصون</div></div>
             </div>
         </div>
     </section>
@@ -345,19 +397,31 @@ nav.scrolled .hamburger { color:#1a2744; }
             </div>
             <div class="team-grid">
                 <div class="team-card fade-in">
-                    <div class="team-avatar">أ.ع</div>
+                    <div class="team-card-img">
+                        <img src="dromnia.png" alt="د. أمنية عبدالله"
+                             onerror="this.parentElement.innerHTML='<div class=team-avatar>أ.ع</div>'"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top">
+                    </div>
                     <h3 class="team-name">د. أمنية عبدالله</h3>
                     <p class="team-role">استشارية الجلدية والتجميل</p>
                     <p class="team-bio">متخصصة في العناية بالبشرة والعلاجات التجميلية، عضو الجمعية المصرية للأمراض الجلدية</p>
                 </div>
                 <div class="team-card fade-in">
-                    <div class="team-avatar">ف.س</div>
+                    <div class="team-card-img">
+                        <img src="drfarida.png" alt="د. فريدة سامي"
+                             onerror="this.parentElement.innerHTML='<div class=team-avatar>ف.س</div>'"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top">
+                    </div>
                     <h3 class="team-name">د. فريدة سامي</h3>
                     <p class="team-role">استشارية التغذية العلاجية</p>
                     <p class="team-bio">متخصصة في التغذية العلاجية وإدارة الوزن، شريكة Eva Pharma في سوهاج</p>
                 </div>
                 <div class="team-card fade-in">
-                    <div class="team-avatar">ر.م</div>
+                    <div class="team-card-img">
+                        <img src="drrehab.png" alt="د. رحاب محبوب الله"
+                             onerror="this.parentElement.innerHTML='<div class=team-avatar>ر.م</div>'"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top">
+                    </div>
                     <h3 class="team-name">د. رحاب محبوب الله</h3>
                     <p class="team-role">استشارية الجلدية والليزر</p>
                     <p class="team-bio">متخصصة في أمراض الجلد والليزر التجميلي، شريكة Lixora في سوهاج</p>
@@ -508,6 +572,3 @@ nav.scrolled .hamburger { color:#1a2744; }
     </script>
 </body>
 </html>
-
-
-
