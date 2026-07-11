@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادات چميلة - نسخة تجريبية</title>
+
+    <link rel="icon" type="image/png" href="../Logo.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        body{font-family:'Cairo',sans-serif;}
+
+        .roadblock-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: var(--radius-full);
+            background: rgba(201, 165, 92, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .roadblock-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .roadblock-text {
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .roadblock-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="../Logo.png" alt="عيادات چميلة" class="auth-logo-img">
+                </div>
+
+                <div class="roadblock-icon">
+                    <i class="fas fa-triangle-exclamation"></i>
+                </div>
+
+                <div class="roadblock-title">تم تسجيل الدخول بنجاح 🎉</div>
+
+                <p class="roadblock-text">
+                    هذا الموقع عبارة عن <strong>نسخة تجريبية (بورتفوليو)</strong> من تصميم وتطوير
+                    <strong>PioneersX</strong>، وليس نظام حجز فعلي يعمل بشكل كامل.<br><br>
+                    تم بناء صفحات تسجيل الدخول والحجز لعرض إمكانيات التصميم والتطوير فقط،
+                    ولا يتم تفعيل الحجوزات أو الدفع الفعلي في هذه النسخة.
+                </p>
+
+                <div class="roadblock-actions">
+                    <a href="https://wa.me/9665477705498" target="_blank" class="btn btn-primary btn-block">
+                        <i class="fab fa-whatsapp"></i> تواصلي معنا عبر واتساب
+                    </a>
+                    <a href="../index.html" class="btn btn-secondary btn-block">
+                        <i class="fas fa-arrow-left"></i> الرجوع للصفحة الرئيسية
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
