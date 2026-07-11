@@ -14,7 +14,7 @@ const BRAND = {
   primaryColor: "#C9A55C",   // gold
 
   logoLetter:  "ج",
-  logoFile:    "assets/logo.png",
+  logoFile:    "Logo.png",
   faviconColor: "%23C9A55C",
 
   phone:      "01149881909",
