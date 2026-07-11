@@ -6,35 +6,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    /* Brand Colors */
-    --primary: #ff1e1e;
-    --primary-dark: #cc0000;
-    --primary-light: #ff4d4d;
-    --primary-glow: rgba(255, 30, 30, 0.5);
+    /* Brand Colors — gold, matches the main چميلة site */
+    --primary: #C9A55C;
+    --primary-dark: #a3833f;
+    --primary-light: #ddc088;
+    --primary-glow: rgba(201, 165, 92, 0.4);
+    --primary-accent: #d88a9a; /* warm rose, paired with gold in gradients/accents */
     
-    /* Background Layers */
-    --bg-primary: #000000;
-    --bg-secondary: #0a0a0a;
-    --bg-tertiary: #111111;
-    --bg-elevated: #161616;
-    --bg-hover: #1a1a1a;
-    --bg-active: #222222;
+    /* Background Layers — warm cream, not black */
+    --bg-primary: #faf6ef;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f3ecdd;
+    --bg-elevated: #ffffff;
+    --bg-hover: #f6efdf;
+    --bg-active: #eee0c4;
     
     /* Text Colors */
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --text-muted: #666666;
-    --text-disabled: #444444;
+    --text-primary: #1a2744;
+    --text-secondary: #5a5044;
+    --text-muted: #8c8272;
+    --text-disabled: #c4bca9;
     
     /* Borders */
-    --border: rgba(255, 255, 255, 0.08);
-    --border-light: rgba(255, 255, 255, 0.12);
+    --border: rgba(201, 165, 92, 0.2);
+    --border-light: rgba(201, 165, 92, 0.3);
     --border-focus: var(--primary);
     
     /* Status Colors */
     --success: #22c55e;
     --warning: #eab308;
-    --error: #ef4444;
+    --error: #c0392b;
     --info: #3b82f6;
     
     /* Layout */
@@ -50,9 +51,9 @@
     --radius-full: 9999px;
     
     /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 2px 8px rgba(201, 165, 92, 0.15);
+    --shadow-md: 0 4px 20px rgba(201, 165, 92, 0.2);
+    --shadow-lg: 0 10px 40px rgba(201, 165, 92, 0.25);
     --shadow-glow: 0 0 40px var(--primary-glow);
     
     /* Transitions */
@@ -259,7 +260,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
 .user-avatar {
     width: 36px;
     height: 36px;
-    background: linear-gradient(135deg, var(--primary), #ff6b6b);
+    background: linear-gradient(135deg, var(--primary), var(--primary-accent));
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
@@ -448,7 +449,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
 .stat-icon {
     width: 42px;
     height: 42px;
-    background: rgba(255, 30, 30, 0.1);
+    background: rgba(201, 165, 92, 0.14);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
@@ -533,7 +534,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
 .action-icon {
     width: 48px;
     height: 48px;
-    background: rgba(255, 30, 30, 0.1);
+    background: rgba(201, 165, 92, 0.14);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
@@ -584,7 +585,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), #ff6b6b);
+    background: linear-gradient(90deg, var(--primary), var(--primary-accent));
     opacity: 0;
     transition: opacity var(--transition-fast);
 }
@@ -721,7 +722,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
 .form-input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(255, 30, 30, 0.15);
+    box-shadow: 0 0 0 3px rgba(201, 165, 92, 0.2);
 }
 
 .form-input::placeholder {
@@ -858,7 +859,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
 .profile-avatar {
     width: 90px;
     height: 90px;
-    background: linear-gradient(135deg, var(--primary), #ff6b6b);
+    background: linear-gradient(135deg, var(--primary), var(--primary-accent));
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
@@ -994,7 +995,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
 .modal-icon {
     width: 56px;
     height: 56px;
-    background: rgba(255, 30, 30, 0.1);
+    background: rgba(201, 165, 92, 0.14);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
@@ -1158,7 +1159,6 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
     }
 }
 
-
 /* ===================================
    AUTH PAGES (Login, Register, etc.)
    =================================== */
@@ -1167,7 +1167,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+    background: linear-gradient(135deg, #faf6ef 0%, #f0e6cc 100%);
     padding: 20px;
 }
 
@@ -1182,6 +1182,28 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-fa
     border-radius: var(--radius-xl);
     padding: 48px 40px;
     box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 50%, var(--primary-accent) 50%, var(--primary-accent) 100%);
+}
+
+.auth-logo-img {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--bg-hover);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 14px;
+    background: #fff;
+    padding: 3px;
 }
 
 .auth-header {
