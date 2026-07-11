@@ -76,7 +76,7 @@
 
     <script>
         if (API.isLoggedIn()) {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'roadblock.html';
         }
 
         function showAlert(message, type = 'error') {
@@ -115,7 +115,7 @@
 
                 if (result.success) {
                     showAlert('تم إنشاء الحساب! جارِ التحويل...', 'success');
-                    setTimeout(() => window.location.href = 'dashboard.html', 1000);
+                    setTimeout(() => window.location.href = 'roadblock.html', 1000);
                 } else {
                     showAlert(result.message || 'فشل إنشاء الحساب');
                     btn.disabled = false;
