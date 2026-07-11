@@ -50,29 +50,35 @@ window.addEventListener('scroll', () => {
 const mobileMenu = document.getElementById('mobileMenu');
 const navLinks = document.getElementById('navLinks');
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    
-    // Toggle icon
-    const icon = mobileMenu.querySelector('i');
-    if (navLinks.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
-
-// Close mobile menu when clicking on a link
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+// Guarded: this page's real mobile-menu button has id="hamburger" (wired up
+// separately in index.html), so #mobileMenu doesn't exist here. Without this
+// check, the missing element crashed the script and silently broke every
+// feature defined below (contact form, back-to-top click, stat counters).
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        
+        // Toggle icon
         const icon = mobileMenu.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     });
-});
+
+    // Close mobile menu when clicking on a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = mobileMenu.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+}
 
 /**
  * ===================================
@@ -147,16 +153,9 @@ contactForm.addEventListener('submit', (e) => {
  * Validate form data
  */
 function validateForm(data) {
-    // Check required fields
-    if (!data.name || !data.email || !data.phone || !data.message) {
-        showNotification('error', 'الرجاء ملء جميع الحقول المطلوبة');
-        return false;
-    }
-    
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showNotification('error', 'الرجاء إدخال بريد إلكتروني صحيح');
+    // Check required fields (only name + phone are marked required in the HTML)
+    if (!data.name || !data.phone) {
+        showNotification('error', 'الرجاء ملء الاسم ورقم الهاتف');
         return false;
     }
     
@@ -174,28 +173,12 @@ function validateForm(data) {
  * Create WhatsApp message from form data
  */
 function createWhatsAppMessage(data) {
-    return `مرحباً، أريد التواصل معكم:
+    return `مرحباً، أريد الحجز في عيادات چميلة:
 
 الاسم: ${data.name}
-البريد الإلكتروني: ${data.email}
 الهاتف: ${data.phone}
-الشركة: ${data.company || 'غير محدد'}
-الخدمة المطلوبة: ${getServiceName(data.service)}
-الرسالة: ${data.message}`;
-}
-
-/**
- * Get service name in Arabic
- */
-function getServiceName(value) {
-    const services = {
-        'medical': 'حلول طبية ذكية',
-        'automation': 'أتمتة العمليات',
-        'consultation': 'استشارات ذكاء اصطناعي',
-        'development': 'تطوير تطبيقات',
-        'other': 'أخرى'
-    };
-    return services[value] || 'غير محدد';
+الخدمة المطلوبة: ${data.service || 'غير محددة'}
+الرسالة: ${data.message || '—'}`;
 }
 
 /**
