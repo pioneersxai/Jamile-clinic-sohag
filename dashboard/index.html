@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - PioneersX</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='80' font-family='Arial Black,sans-serif' font-size='90' font-weight='900' text-anchor='middle' fill='%23ff1e1e'%3EX%3C/text%3E%3C/svg%3E">
-    
+    <title>تسجيل الدخول - عيادات چميلة</title>
+
+    <link rel="icon" type="image/png" href="../Logo.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/dashboard.css">
+    <style>body{font-family:'Cairo',sans-serif;}</style>
 </head>
 <body>
     <div class="auth-page">
         <div class="auth-container">
             <div class="auth-card">
                 <div class="auth-header">
-                    <div class="auth-logo">Pioneers<span class="x">X</span></div>
-                    <p class="auth-tagline">AI-Powered Solutions Platform</p>
+                    <img src="../Logo.png" alt="عيادات چميلة" class="auth-logo-img">
+                    <div class="auth-logo" style="font-size:1.4rem;">عيادات <span class="x">چميلة</span></div>
+                    <p class="auth-tagline"><i class="fas fa-spa" style="color:var(--primary);margin-left:6px;"></i>چميلة.. عيشي الفرق</p>
                 </div>
-                
+
                 <div class="auth-title">
-                    <h1>Welcome back</h1>
-                    <p>Sign in to your account to continue</p>
+                    <h1>أهلاً بيكي في چميلة</h1>
+                    <p>سجّلي دخولك وتابعي حجوزاتك وجلساتك بسهولة</p>
                 </div>
-                
+
                 <div class="alert" id="alert"></div>
-                
+
                 <form id="loginForm">
                     <div class="form-group">
-                        <label class="form-label">Email</label>
+                        <label class="form-label">البريد الإلكتروني</label>
                         <input type="email" class="form-input" id="email" placeholder="you@example.com" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Password</label>
+                        <label class="form-label">كلمة المرور</label>
                         <div class="input-wrapper">
                             <input type="password" class="form-input" id="password" placeholder="••••••••" required>
                             <span class="input-icon" onclick="togglePassword()">
@@ -41,26 +44,27 @@
                             </span>
                         </div>
                     </div>
-                    
-                    <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
-                    
-                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Sign In</button>
+
+                    <a href="forgot-password.html" class="forgot-link">نسيتي كلمة المرور؟</a>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">تسجيل الدخول</button>
                 </form>
-                
+
                 <div class="auth-footer">
-                    Don't have an account? <a href="register.html">Create account</a>
+                    مفيش حساب؟ <a href="register.html">احجزي الآن</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <script src="../config.js"></script>
     <script src="js/api.js"></script>
     <script>
         // 1. Redirect if already logged in
         if (API.isLoggedIn()) {
             window.location.href = 'dashboard.html';
         }
-        
+
         // 2. Password visibility toggle
         function togglePassword() {
             const input = document.getElementById('password');
@@ -73,48 +77,44 @@
                 icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
-        
+
         // 3. Robust Alert display
         function showAlert(message, type = 'error') {
             const alert = document.getElementById('alert');
             alert.className = `alert alert-${type} show`;
             alert.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
         }
-        
+
         // 4. Form submission handler
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault(); // Stop the page from refreshing
-            
+            e.preventDefault();
+
             const btn = document.getElementById('submitBtn');
             const emailInput = document.getElementById('email');
             const passwordInput = document.getElementById('password');
 
-            // CRITICAL FIX: Removing spaces and forcing lowercase for the email payload
             const cleanEmail = emailInput.value.trim().toLowerCase();
             const password = passwordInput.value;
 
-            // UI Loading state
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Signing in...';
-            
+            btn.innerHTML = '<span class="spinner"></span> جارِ تسجيل الدخول...';
+
             try {
-                // Call API using the fixed login method
                 const result = await API.login(cleanEmail, password);
-                
+
                 if (result.success) {
-                    showAlert('Login successful! Redirecting...', 'success');
+                    showAlert('تم تسجيل الدخول بنجاح! جارِ التحويل...', 'success');
                     setTimeout(() => window.location.href = 'dashboard.html', 800);
                 } else {
-                    // Show ACTUAL error from server (e.g., "Account Locked" or "Invalid credentials")
-                    showAlert(result.message || 'Invalid email or password');
+                    showAlert(result.message || 'البريد الإلكتروني أو كلمة المرور غير صحيحة');
                     btn.disabled = false;
-                    btn.innerHTML = 'Sign In';
+                    btn.innerHTML = 'تسجيل الدخول';
                 }
             } catch (err) {
                 console.error("Critical Login Error:", err);
-                showAlert("Connection failed. Please check your internet.");
+                showAlert("فشل الاتصال. تأكدي من الإنترنت.");
                 btn.disabled = false;
-                btn.innerHTML = 'Sign In';
+                btn.innerHTML = 'تسجيل الدخول';
             }
         });
     </script>
